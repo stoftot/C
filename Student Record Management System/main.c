@@ -217,6 +217,10 @@ int IncreaseIndex(int index) {
         s = GetStudentAt(index);
         if (strlen(s.name) == 0) {
             index--;
+            s = GetStudentAt(index);
+            if (s.is_deleted == 1) {
+                return DecreaseIndex(index);
+            }
             break; // If invalid, maybe end of file
         }
     } while (s.is_deleted == 1);
